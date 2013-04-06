@@ -1,0 +1,19 @@
+<h1><%= @project.title %></h1>
+
+<h3>Team working on this project: 
+	<%= link_to @project.team.name, team_url(@project.team) %> </h3>
+
+<h2> Project Description: </h2>
+
+<h5> <%= @project.descript %> </h5>
+
+
+
+<br>
+<%= link_to "View Project Items", project_items_url(@project) %>
+<br><br><br>
+<%=link_to "Add New Item", new_project_item_url(@project) %>
+<br>
+<%= link_to "Edit Project", edit_project_url(@project) %>
+<br>
+<%=link_to "Back to Team", team_url(@project.team) %>

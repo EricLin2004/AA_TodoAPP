@@ -1,0 +1,10 @@
+<h1><%= @item.title %> Details </h1>
+<h3>Part of project: <%= link_to @item.project.title, project_url(@item.project) %> </h3>
+<h4><%= 'Completed ' if @item.completed == 1 %></h4>
+<h4><%= 'Unfinished ' if @item.completed == 0 %></h4>
+<%= @item.descript %>
+
+<br>
+<%= link_to "Edit Item", edit_item_url(@item) %>
+<br>
+<%= link_to "Back to Project Items", project_items_url(@item.project) %>

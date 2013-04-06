@@ -1,0 +1,50 @@
+<%= form_for(@item) do |f| %>
+
+	<%= f.label :title, "Title" %>
+	<%= f.text_field :title %>
+
+	<%= f.label :descript, "Description" %>
+
+	<%= f.text_area :descript %>
+
+	<%=f.label :project_id, "Project" %>
+  <%= f.collection_select(:project_id, Project.all, :id, :title) %>
+
+	<%= f.label :completed_1, "Completed" %>
+	<%= f.radio_button :completed, 1 %>
+
+	<%= f.label :completed_0, "In-Progress" %>
+	<%= f.radio_button :completed, 0 %>
+
+	<br><br>
+	<%= f.submit %>
+
+<% end %>
+
+<h1> HTML FORM PRACTICE </h1>
+<form id = "new_item" class="new_item" method="post">
+	<label for="item_title">Title</label>
+	<input type="text" name="item[title]" id="item_title">
+
+	<label for="item_descript">Description</label>
+	<textarea name="item[description]" id="item_descript"></textarea>
+
+	<label for="item_project_id">Project</label>
+	<select id="item_project_id">
+		<% Project.all.each do |project| %>
+			<% if project.id == params[:project_id].to_i %>
+				<option value=<%=project.id %> selected><%= project.title %></option>
+			<% else %>
+				<option value=<%=project.id %>><%= project.title %></option>
+			<% end %>
+		<% end %>
+	</select>
+
+	<label for="item_completed">Completed</label>
+	<input type="radio" name="item[completed]" id="item_completed">
+
+	<label for="item_in_progress">In-Progress</label>
+	<input type="radio" name="item[completed]" id="item_in_progress">
+	<br><br>
+	<input type="submit" value="Add Item">
+</form>

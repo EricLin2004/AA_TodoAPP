@@ -1,0 +1,33 @@
+<h1> Items To-do</h1>
+
+<form action=<%= batch_update_project_items_url(@items.first.project) %> method="post" >
+
+<h4> Completed Items</h4>
+<% @items.each do |item| %>
+	<ul>
+		<input type="hidden" name="<%= item.id %>">
+		<% if item.completed == 1 %>
+			<li><%= link_to item.title, item_url(item) %>
+			<input type="checkbox" name="<%= item.id %>" checked></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<h4> Incompleted Items</h4>
+<% @items.each do |item| %>
+	<ul>
+		<% if item.completed == 0 %>
+			<li><%= link_to item.title, item_url(item) %>
+			<input type="checkbox" name="<%= item.id %>"></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<input type="submit" value="Update Items">
+
+</form>
+
+
+<%= link_to 'Back to Project', project_url(@items.first.project) %>
+<br>
+<%= link_to 'Add New Item', new_project_item_url(@items.first.project) %>

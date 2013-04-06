@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TODO</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="container">
+		<ul>
+		<p><% flash.notice.each do |err| %></p>
+		  <li> <%= err %></li>
+		  <% end unless flash.notice.nil?%>
+		</ul>
+		<%= yield %>
+		<p>
+		Navigation:
+		<br>
+		<%= link_to 'Users', users_url %>
+		<%= link_to 'Teams', teams_url %>
+		<%= link_to 'Projects', projects_url %>
+		<%= link_to 'Items', items_url %>
+	</div>
+</body>
+</html>

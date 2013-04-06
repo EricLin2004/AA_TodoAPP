@@ -1,0 +1,12 @@
+<h1><%= @user.name %></h1>
+
+<h3> Current Teams: </h3>
+<ul>
+	<% @user.teams.each do |team| %>
+		<li><%= link_to team.name, team_url(team) %></li>
+	<% end %>
+</ul>
+
+<%= link_to "Edit User", edit_user_url(@user) %>
+<br>
+<%=link_to "Back to Users", users_url %>
